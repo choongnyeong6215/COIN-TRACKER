@@ -1,11 +1,14 @@
 import React from 'react'
 import Router from './routes/Router'
+import { GlobalStyle } from './styles/globalStyle'
+
 
 const App = () => {
   return (
-    <div>
+    <>
+      <GlobalStyle />
       <Router />
-    </div>
+    </>
   )
 }
 
