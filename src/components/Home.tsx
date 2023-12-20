@@ -1,17 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container, Header, Title, CoinsList, Coin, Loading, CoinImg } from "../styles/homeStyle"
 import { Link } from "react-router-dom";
-
-// api 넘겨받을 데이터 타입 지정
-interface CoinItfc {
-  id : string;
-  name : string;
-  symbol : string;
-  rank : number;
-  is_new : boolean;
-  is_active : boolean;
-  type : string;
-}
+import { CoinItfc } from "../interface/HomeInterface";
 
 const Home = () => {
   // 코인 리스트
