@@ -20,13 +20,17 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.coinpaprika.com/v1/coins")
-    .then((response) => response.json())
-    .then((data) => setCoinList(data.slice(0, 100)))
-    setLoading(false);
+    const fetchData = async () => {
+      const response = await fetch("https://api.coinpaprika.com/v1/coins");
+      const data = await response.json();
+
+      setCoinList(data.splice(0, 100));
+      setLoading(false);
+    }
+    fetchData();
   }, []);
 
-  console.log(coinList);
+  // console.log(coinList);
   
   return (
     <div>
@@ -38,8 +42,8 @@ const Home = () => {
           <CoinsList>
             {coinList.map((coin) => (
               <Coin key={coin.id}>
-                  <CoinImg src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`} alt="coinImage" />
-                  <Link to={`/${coin.id}`}>
+                  <CoinImg src={`https://cryptocurrencyliveprices.com/img/${coin.id}.png`} alt="coinImage" />
+                   <Link to={`/${coin.id}`} state={{coinName : coin.name}}>
                     {coin.name}
                   </Link>
               </Coin>
