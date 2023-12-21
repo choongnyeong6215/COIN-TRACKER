@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
+import { DetailInfoBox, DetailInfoItem, CoinDescription } from '../styles/CoinInfoStyle';
 import { LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
 
 const Coin = () => {
@@ -31,18 +32,56 @@ const Coin = () => {
       setCoinPriceInfo(priceData);
     }
     fetchData();
-  }, []);
 
+    setLoading(false);
+  }, []);
 
   return (
     <Container>
       <Header>
         <Title>
-          {/* state 못받은 상태에서 접속할 경우 */}
-          {state?.coinName || ""}
+          {/* 홈 경로에서 세부 정보로 이동하지 않고 바로 세부정부로 이동해도 정보 볼수 있도록 */}
+          {state?.coinName ? state.coinName : coinInfo?.name}
         </Title>
       </Header>
-      <Loading>loading...</Loading>
+      {loading ? <Loading>Loading...</Loading> : (
+      <>
+          {/*  코인 기본 정보 */}
+          <DetailInfoBox>
+            <DetailInfoItem>
+              <p>이름</p>
+              <p>{coinInfo?.name}</p>
+            </DetailInfoItem>
+            <DetailInfoItem>
+              <p>기호</p>
+              <p>{coinInfo?.symbol}</p>
+            </DetailInfoItem>
+            <DetailInfoItem>
+              <p>순위</p>
+              <p>{coinInfo?.rank}</p>
+            </DetailInfoItem>
+          </DetailInfoBox>
+          {/* 코인 가격 정보 */}
+          <DetailInfoBox>
+            <DetailInfoItem>
+              <p>가격</p>
+              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(2)}`}</p>
+            </DetailInfoItem>
+            <DetailInfoItem>
+              <p>최초 발행일</p>
+              <p>{coinPriceInfo?.first_data_at.substring(0, 10)}</p>
+            </DetailInfoItem>
+            <DetailInfoItem>
+              <p>공급량</p>
+              <p>{coinPriceInfo?.total_supply}</p>
+            </DetailInfoItem>
+          </DetailInfoBox>
+          {/* 코인 설명 */}
+          <CoinDescription>
+            <p>{coinInfo?.description}</p>
+          </CoinDescription>
+      </>    
+      )}
     </Container>
   )
 }
