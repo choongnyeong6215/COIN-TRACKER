@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, Outlet, Link, useMatch } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
-import { DetailInfoBox, DetailInfoItem, CoinDescription } from '../styles/CoinInfoStyle';
+import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem } from '../styles/CoinInfoStyle';
 import { LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
+import Price from "../components/Price"
+import Chart from '../components/Chart';
+
+
 
 const Coin = () => {
 
@@ -17,6 +21,12 @@ const Coin = () => {
 
   // link state
   const {state} = useLocation() as LinkStateItfc;
+
+  // 경로 확인 변수
+  const priceRouteMatch = useMatch("/:coinId/price");
+  const chartRouteMatch = useMatch("/:coinId/chart");
+
+  console.log(priceRouteMatch);
 
   useEffect(() => {
     async function fetchData() {
@@ -61,11 +71,12 @@ const Coin = () => {
               <p>{coinInfo?.rank}</p>
             </DetailInfoItem>
           </DetailInfoBox>
+          
           {/* 코인 가격 정보 */}
           <DetailInfoBox>
             <DetailInfoItem>
               <p>가격</p>
-              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(2)}`}</p>
+              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(6)}`}</p>
             </DetailInfoItem>
             <DetailInfoItem>
               <p>최초 발행일</p>
@@ -76,12 +87,31 @@ const Coin = () => {
               <p>{coinPriceInfo?.total_supply}</p>
             </DetailInfoItem>
           </DetailInfoBox>
+
           {/* 코인 설명 */}
           <CoinDescription>
             <p>{coinInfo?.description}</p>
           </CoinDescription>
       </>    
       )}
+
+      {/* 중첩 라우팅 링크 */}
+      <InfoTabBox>
+        <InfoTabItem $isMatchedPath={priceRouteMatch !== null}>
+          <Link to={`/${coinId}/price`}>
+            가격
+          </Link>
+        </InfoTabItem>
+        <InfoTabItem $isMatchedPath={chartRouteMatch !== null}>
+          <Link to={`/${coinId}/chart`}>
+            차트
+          </Link>
+        </InfoTabItem>
+      </InfoTabBox>
+
+      {/* 가격, 차트 컴포넌트 중첩 라우팅 */}
+      <Outlet />
+
     </Container>
   )
 }
