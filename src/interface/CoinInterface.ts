@@ -1,3 +1,8 @@
+// useParams 인터페이스
+export type CoinParamsItfc = {
+    coinId : string;
+}
+
 // link state 인터페이스
 export interface LinkStateItfc {
     state : {

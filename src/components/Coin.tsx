@@ -2,22 +2,14 @@ import { useState, useEffect } from 'react'
 import { useParams, useLocation, Outlet, Link, useMatch } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
 import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem } from '../styles/CoinInfoStyle';
-import { LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
-import Price from "../components/Price"
-import Chart from '../components/Chart';
-
-
+import { CoinParamsItfc, LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
+import { useQuery } from 'react-query';
+import { fetchCoinInfo, fetchCoinPriceInfo } from '../api';
 
 const Coin = () => {
 
-  const {coinId} = useParams();
-  
-  // 코인 정보
-  const [coinInfo, setCoinInfo] = useState<CoinInfoItfc>();
-  // 코인 가격 정보
-  const [coinPriceInfo, setCoinPriceInfo] = useState<CoinPriceInfoItfc>();
-  // 로딩 관리
-  const [loading, setLoading] = useState(true);
+
+  const {coinId} = useParams() as CoinParamsItfc;
 
   // link state
   const {state} = useLocation() as LinkStateItfc;
@@ -26,25 +18,16 @@ const Coin = () => {
   const priceRouteMatch = useMatch("/:coinId/price");
   const chartRouteMatch = useMatch("/:coinId/chart");
 
-  console.log(priceRouteMatch);
+  // react query
+  // 코인 정보
+  const {isLoading : coinInfoLoading, data : coinInfo} = useQuery<CoinInfoItfc>(["coinInfo", coinId], () => fetchCoinInfo(coinId));
 
-  useEffect(() => {
-    async function fetchData() {
-      // 코인 정보
-      const infoResponse = await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`);
-      const infoData = await infoResponse.json();
+  // 코인 가격 정보
+  const {isLoading : coinPriceInfoLoading, data : coinPriceInfo} = useQuery<CoinPriceInfoItfc>(["coinPriceInfo", coinId], () => fetchCoinPriceInfo(coinId));
 
-      // 가격 정보
-      const priceResponse = await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`);
-      const priceData = await priceResponse.json();
+  // 두 쿼리 중 하나라도 로딩 완료되면 fetch 완료 처리
+  const loading = coinInfoLoading || coinPriceInfoLoading;
 
-      setCoinInfo(infoData);
-      setCoinPriceInfo(priceData);
-    }
-    fetchData();
-
-    setLoading(false);
-  }, []);
 
   return (
     <Container>
