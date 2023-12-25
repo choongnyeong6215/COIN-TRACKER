@@ -21,3 +21,12 @@ export function fetchCoinPriceInfo(coinId : string) {
         .then((response) => response.json())
     )
 }
+
+// 차트 화면 코인 histtory fetch
+export function fetchCoinHistory(coinId : string) {
+    return (
+        // 노마드코더 자체 api 사용
+        fetch(`https://ohlcv-api.nomadcoders.workers.dev/?coinId=${coinId}`)
+        .then((response) => response.json())
+    )
+}

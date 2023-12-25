@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useParams, useLocation, Outlet, Link, useMatch } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
 import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem } from '../styles/CoinInfoStyle';
@@ -93,7 +92,7 @@ const Coin = () => {
       </InfoTabBox>
 
       {/* 가격, 차트 컴포넌트 중첩 라우팅 */}
-      <Outlet />
+      <Outlet context={{coinId}}/>
 
     </Container>
   )
