@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const HomeBtn = styled.button`
+    display : flex;
+    justify-content : flex-start;
+    align-items : center;
+    padding : 1rem 2rem;
+    border : none;
+    background-color : ${(props) => props.theme.empTxtColor};
+    border-radius : 1rem;
+    color : ${(props) => props.theme.textColor};
+    margin-bottom : 0.5rem;
+    cursor : pointer;
+`
+
 export const DetailInfoBox = styled.div`
     display : flex;
     justify-content : space-between;

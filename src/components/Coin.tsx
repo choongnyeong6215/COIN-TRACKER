@@ -1,6 +1,6 @@
-import { useParams, useLocation, Outlet, Link, useMatch } from 'react-router-dom';
+import { useParams, useLocation, Outlet, Link, useMatch, useNavigate } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
-import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem } from '../styles/CoinInfoStyle';
+import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem, HomeBtn } from '../styles/CoinInfoStyle';
 import { CoinParamsItfc, LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
 import { useQuery } from 'react-query';
 import { fetchCoinInfo, fetchCoinPriceInfo } from '../api';
@@ -27,6 +27,11 @@ const Coin = () => {
   // 두 쿼리 중 하나라도 로딩 완료되면 fetch 완료 처리
   const loading = coinInfoLoading || coinPriceInfoLoading;
 
+  const navigate = useNavigate();
+
+  const handleHomeBtn = () => {
+    navigate("/");
+  };
 
   return (
     <Container>
@@ -38,6 +43,11 @@ const Coin = () => {
       </Header>
       {loading ? <Loading>Loading...</Loading> : (
       <>
+          {/* 홈 이동 버튼 */}
+          <HomeBtn onClick={handleHomeBtn}>
+            홈
+          </HomeBtn>
+
           {/*  코인 기본 정보 */}
           <DetailInfoBox>
             <DetailInfoItem>
