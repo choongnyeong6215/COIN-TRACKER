@@ -41,7 +41,9 @@ export const DetailInfoItem = styled.div`
 `;
 
 export const CoinDescription = styled.div`
-    margin-top : 2rem;
+    background-color : rgba(0, 0, 0, 0.7);
+    padding: 1.5rem 2rem;
+    border-radius : 1rem;
     p {
         text-align: center;
         line-height: 2rem;

@@ -12,12 +12,12 @@ const Chart = () => {
   // react-query
   const {isLoading, data} = useQuery<CoinHistroyItfc[]>(["coinHistory", coinId], () => fetchCoinHistory(coinId));
 
-
   return (
     <ChartBox>
       {isLoading ? (
         <ChartLoading>Chart is Loading...</ChartLoading>
       ) : (
+        Array.isArray(data) ? (
         <ApexChart
           type="candlestick"
           // 차트에 보여줄 데이터
@@ -25,9 +25,9 @@ const Chart = () => {
             {
               name : "ohlc",
               data : data?.map((price) => ({
-                x : String(new Date(price.time_close * 1000)).substring(4, 10),
-                y : [price.open, price.high, price.close, price.low]
-              })).slice(13, 20) as any[]
+                x : new Date(price.time_close * 1000),
+                y : [price.open, price.high, price.low, price.close]
+              })) as []
             }
           ]}
           // 차트 스타일 커스텀
@@ -37,7 +37,7 @@ const Chart = () => {
             },
             chart : {
               width : 500,
-              height : 500,
+              height : 350,
               background : "transparent",
               toolbar : {
                 show : false
@@ -47,19 +47,44 @@ const Chart = () => {
               show : false
             },
             xaxis : {
-              categories : data?.map((price) => price.time_close)
+              type : "datetime",
+              categories : data?.map((price) => price.time_close),
+              labels : {
+                show : false,
+                datetimeFormatter : {
+                  month : "mmm yy"
+                }
+              },
+              axisBorder : {
+                show : false
+              },
+              axisTicks : {
+                show : false
+              }
             },
-            // 캔들 심지 색상
-            plotOptions: {
-              candlestick: {
-                colors: {
-                  upward: "#3C90EB",
-                  downward: "#DF7D46"
+            grid : {
+              xaxis : {
+                lines : {
+                  show : false
+                },
+              },
+              yaxis : {
+                lines : {
+                  show : false
                 }
               }
-            }
+            },
+            plotOptions: {
+              candlestick: {
+                wick: {
+                  useFillColor: true,
+                }
+              }
+            }          
           }}
-        />
+        />) : (
+          <p style={{textAlign : "center"}}>차트 데이터가 존재하지 않습니다.</p>
+        )
       )}
     </ChartBox>
   )

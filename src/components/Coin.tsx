@@ -68,7 +68,7 @@ const Coin = () => {
           <DetailInfoBox>
             <DetailInfoItem>
               <p>가격</p>
-              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(6)}`}</p>
+              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(5)}`}</p>
             </DetailInfoItem>
             <DetailInfoItem>
               <p>최초 발행일</p>
@@ -82,9 +82,9 @@ const Coin = () => {
 
           {/* 코인 설명 */}
           <CoinDescription>
-            <p>{coinInfo?.description}</p>
+            <p>{coinInfo?.description ? coinInfo.description : "설명 데이터가 존재하지 않습니다."}</p>
           </CoinDescription>
-      </>    
+      </>
       )}
 
       {/* 중첩 라우팅 링크 */}
