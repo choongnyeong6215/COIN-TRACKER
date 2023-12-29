@@ -32,13 +32,13 @@ export const Coin = styled.li`
     justify-content : center;
     align-items : center;
     a {
-        color : ${(props) => props.theme.bgColor};
+        color : black;
         text-align : center;
         margin-top: 1rem;
         font-size: 0.75rem;
         &:hover {
             cursor : pointer;
-            color : ${(props) => props.theme.empTxtColor};
+            color : ${(props) => props.theme.empTxtColor}
         }
     }
 `;
@@ -65,3 +65,13 @@ export const Loading = styled.h1`
     font-size: 5rem;
     animation: ${LoadingAnimation} 2s linear infinite;
 `;
+
+export const ChgThemeBtn = styled.button`
+    width : 50px;
+    height : 50px;
+    border-radius : 50%;
+    border : none;
+    position : absolute;
+    top : 1rem;
+    right : 1rem;
+`

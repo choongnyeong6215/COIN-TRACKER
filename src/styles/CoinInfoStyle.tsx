@@ -17,7 +17,7 @@ export const DetailInfoBox = styled.div`
     display : flex;
     justify-content : space-between;
     align-items : flex-start;
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     margin-bottom : 2rem;
@@ -44,7 +44,7 @@ export const PriceInfoBox = styled.div`
     display : flex;
     justify-content : space-around;
     align-items : flex-start;
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     margin-bottom : 2rem;
@@ -68,7 +68,7 @@ export const PriceInfoItem = styled.div`
 `;
 
 export const CoinDescription = styled.div`
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     p {
@@ -88,7 +88,7 @@ export const InfoTabItem = styled.div<{$isMatchedPath : boolean}>`
     justify-content : center;
     align-items : center;
     padding : 1rem 5rem;
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     border-radius : 1rem;
     margin-top : 2rem;
     // 중첩 라우팅 요소 중 현재 경로의 요소만 강조색상

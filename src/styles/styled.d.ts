@@ -5,5 +5,6 @@ declare module "styled-components" {
         bgColor : string;
         textColor : string;
         empTxtColor : string;      // 강조 색상
+        boxColor : string;         // 박스 색상
     }
 }

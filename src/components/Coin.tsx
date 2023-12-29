@@ -27,8 +27,8 @@ const Coin = () => {
     ["coinPriceInfo", coinId],
     () => fetchCoinPriceInfo(coinId),
     {
-      // query 5초 단위로 refetch
-      refetchInterval : 5000
+      // query 5분 단위로 refetch
+      refetchInterval : 300000
     }
   );
 
@@ -82,7 +82,7 @@ const Coin = () => {
               <p>{coinPriceInfo?.total_supply}</p>
             </PriceInfoItem>
             <PriceInfoItem>
-              <p>촤대 공급량</p>
+              <p>최대 공급량</p>
               <p>{coinPriceInfo?.max_supply}</p>
             </PriceInfoItem>
           </PriceInfoBox>

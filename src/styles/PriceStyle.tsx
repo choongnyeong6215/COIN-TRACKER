@@ -12,7 +12,7 @@ export const MaxPriceBox = styled.div`
     display : flex;
     justify-content : space-between;
     align-items : center;
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
 `
@@ -44,7 +44,7 @@ export const PercentChgBox = styled.div`
 `
 
 export const PercentChgItem = styled.div`
-    background-color : rgba(0, 0, 0, 0.7);
+    background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     p {

@@ -4,6 +4,7 @@ import { CoinItfc } from "../interface/HomeInterface";
 import { useQuery } from "react-query";
 import { fetchCoinList } from "../api";
 import { Helmet } from "react-helmet";
+import {ChgThemeBtn} from '../styles/homeStyle';
 
 const Home = () => {
   // react query
@@ -17,6 +18,7 @@ const Home = () => {
         <Helmet>
           <title>Coin Tracker</title>
         </Helmet>
+        <ChgThemeBtn>switch</ChgThemeBtn>
         <Header>
           <Title>Coin Tracker</Title>
         </Header>
