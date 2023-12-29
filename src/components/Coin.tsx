@@ -4,6 +4,7 @@ import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem
 import { CoinParamsItfc, LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
 import { useQuery } from 'react-query';
 import { fetchCoinInfo, fetchCoinPriceInfo } from '../api';
+import { Helmet } from 'react-helmet';
 
 const Coin = () => {
 
@@ -22,7 +23,14 @@ const Coin = () => {
   const {isLoading : coinInfoLoading, data : coinInfo} = useQuery<CoinInfoItfc>(["coinInfo", coinId], () => fetchCoinInfo(coinId));
 
   // 코인 가격 정보
-  const {isLoading : coinPriceInfoLoading, data : coinPriceInfo} = useQuery<CoinPriceInfoItfc>(["coinPriceInfo", coinId], () => fetchCoinPriceInfo(coinId),);
+  const {isLoading : coinPriceInfoLoading, data : coinPriceInfo} = useQuery<CoinPriceInfoItfc>(
+    ["coinPriceInfo", coinId],
+    () => fetchCoinPriceInfo(coinId),
+    {
+      // query 5초 단위로 refetch
+      refetchInterval : 5000
+    }
+  );
 
   // 두 쿼리 중 하나라도 로딩 완료되면 fetch 완료 처리
   const loading = coinInfoLoading || coinPriceInfoLoading;
@@ -35,6 +43,9 @@ const Coin = () => {
 
   return (
     <Container>
+      <Helmet>
+        <title>{state?.coinName ? state.coinName : coinInfo?.name}</title>
+      </Helmet>
       <Header>
         <Title>
           {/* 홈 경로에서 세부 정보로 이동하지 않고 바로 세부정부로 이동해도 정보 볼수 있도록 */}

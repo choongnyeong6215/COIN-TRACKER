@@ -10,7 +10,14 @@ const Chart = () => {
   const {coinId} = useOutletContext() as ChartPropsItfc;
 
   // react-query
-  const {isLoading, data} = useQuery<CoinHistroyItfc[]>(["coinHistory", coinId], () => fetchCoinHistory(coinId));
+  const {isLoading, data} = useQuery<CoinHistroyItfc[]>(
+    ["coinHistory", coinId], 
+    () => fetchCoinHistory(coinId), 
+    {
+      // 차트 데이터 10초 단위로 refetch
+      refetchInterval : 10000
+    }
+  );
 
   return (
     <ChartBox>

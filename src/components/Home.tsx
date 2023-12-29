@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CoinItfc } from "../interface/HomeInterface";
 import { useQuery } from "react-query";
 import { fetchCoinList } from "../api";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   // react query
@@ -13,6 +14,9 @@ const Home = () => {
   return (
     <div>
       <Container>
+        <Helmet>
+          <title>Coin Tracker</title>
+        </Helmet>
         <Header>
           <Title>Coin Tracker</Title>
         </Header>
