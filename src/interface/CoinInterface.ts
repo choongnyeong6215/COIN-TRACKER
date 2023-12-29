@@ -67,3 +67,9 @@ export interface CoinPriceInfoItfc {
         }
     }
 }
+
+// 테마 변경 props 인터페이스
+export interface CoinThemePropsItfc {
+    handleTheme : () => void;
+    isDark : boolean;
+}

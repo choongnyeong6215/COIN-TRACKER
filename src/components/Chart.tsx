@@ -7,7 +7,7 @@ import { ChartBox, ChartLoading } from "../styles/ChartStyle";
 
 const Chart = () => {
 
-  const {coinId} = useOutletContext() as ChartPropsItfc;
+  const {coinId, isDark} = useOutletContext() as ChartPropsItfc;
 
   // react-query
   const {isLoading, data} = useQuery<CoinHistroyItfc[]>(
@@ -40,7 +40,7 @@ const Chart = () => {
           // 차트 스타일 커스텀
           options={{
             theme : {
-              mode : "dark"
+              mode : isDark ? "dark" : "light"
             },
             chart : {
               width : 500,

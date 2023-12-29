@@ -1,5 +1,6 @@
 export interface ChartPropsItfc {
     coinId : string;
+    isDark : boolean;
 }
 
 export interface CoinHistroyItfc {

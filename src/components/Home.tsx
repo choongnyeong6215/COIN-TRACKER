@@ -5,8 +5,13 @@ import { useQuery } from "react-query";
 import { fetchCoinList } from "../api";
 import { Helmet } from "react-helmet";
 import {ChgThemeBtn} from '../styles/homeStyle';
+import { HomeThemePropsItfc } from "../interface/HomeInterface";
+// react-icons
+import { FaMoon } from "react-icons/fa";
+import { IoSunnySharp } from "react-icons/io5";
 
-const Home = () => {
+
+const Home = ({handleTheme, isDark} : HomeThemePropsItfc) => {
   // react query
   const {isLoading, data} = useQuery<CoinItfc[]>("coinList", fetchCoinList);
 
@@ -18,7 +23,15 @@ const Home = () => {
         <Helmet>
           <title>Coin Tracker</title>
         </Helmet>
-        <ChgThemeBtn>switch</ChgThemeBtn>
+        {isDark ? (
+          <ChgThemeBtn onClick={handleTheme}>
+            <FaMoon size="20" color="#F67280"/>
+          </ChgThemeBtn>
+        ) : (
+          <ChgThemeBtn onClick={handleTheme}>
+            <IoSunnySharp size="20" color="#F67280"/>
+        </ChgThemeBtn>
+        )}
         <Header>
           <Title>Coin Tracker</Title>
         </Header>
