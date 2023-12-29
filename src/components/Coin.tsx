@@ -1,6 +1,6 @@
 import { useParams, useLocation, Outlet, Link, useMatch, useNavigate } from 'react-router-dom';
 import { Container, Header, Loading, Title } from '../styles/homeStyle'
-import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem, HomeBtn } from '../styles/CoinInfoStyle';
+import { DetailInfoBox, DetailInfoItem, CoinDescription, InfoTabBox, InfoTabItem, PriceInfoBox, PriceInfoItem, HomeBtn } from '../styles/CoinInfoStyle';
 import { CoinParamsItfc, LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '../interface/CoinInterface';
 import { useQuery } from 'react-query';
 import { fetchCoinInfo, fetchCoinPriceInfo } from '../api';
@@ -22,7 +22,7 @@ const Coin = () => {
   const {isLoading : coinInfoLoading, data : coinInfo} = useQuery<CoinInfoItfc>(["coinInfo", coinId], () => fetchCoinInfo(coinId));
 
   // 코인 가격 정보
-  const {isLoading : coinPriceInfoLoading, data : coinPriceInfo} = useQuery<CoinPriceInfoItfc>(["coinPriceInfo", coinId], () => fetchCoinPriceInfo(coinId));
+  const {isLoading : coinPriceInfoLoading, data : coinPriceInfo} = useQuery<CoinPriceInfoItfc>(["coinPriceInfo", coinId], () => fetchCoinPriceInfo(coinId),);
 
   // 두 쿼리 중 하나라도 로딩 완료되면 fetch 완료 처리
   const loading = coinInfoLoading || coinPriceInfoLoading;
@@ -51,12 +51,12 @@ const Coin = () => {
           {/*  코인 기본 정보 */}
           <DetailInfoBox>
             <DetailInfoItem>
-              <p>이름</p>
-              <p>{coinInfo?.name}</p>
-            </DetailInfoItem>
-            <DetailInfoItem>
               <p>기호</p>
               <p>{coinInfo?.symbol}</p>
+            </DetailInfoItem>
+            <DetailInfoItem>
+              <p>가격</p>
+              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(5)}`}</p>
             </DetailInfoItem>
             <DetailInfoItem>
               <p>순위</p>
@@ -65,20 +65,16 @@ const Coin = () => {
           </DetailInfoBox>
           
           {/* 코인 가격 정보 */}
-          <DetailInfoBox>
-            <DetailInfoItem>
-              <p>가격</p>
-              <p>{`$${coinPriceInfo?.quotes.USD.price.toFixed(5)}`}</p>
-            </DetailInfoItem>
-            <DetailInfoItem>
-              <p>최초 발행일</p>
-              <p>{coinPriceInfo?.first_data_at.substring(0, 10)}</p>
-            </DetailInfoItem>
-            <DetailInfoItem>
-              <p>공급량</p>
+          <PriceInfoBox>
+            <PriceInfoItem>
+              <p>총 공급량</p>
               <p>{coinPriceInfo?.total_supply}</p>
-            </DetailInfoItem>
-          </DetailInfoBox>
+            </PriceInfoItem>
+            <PriceInfoItem>
+              <p>촤대 공급량</p>
+              <p>{coinPriceInfo?.max_supply}</p>
+            </PriceInfoItem>
+          </PriceInfoBox>
 
           {/* 코인 설명 */}
           <CoinDescription>

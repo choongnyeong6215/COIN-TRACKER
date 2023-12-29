@@ -32,6 +32,33 @@ export const DetailInfoItem = styled.div`
         &:first-child {
             font-weight : bold;
             font-size : 1.25rem;
+        } 
+        &:last-child {
+            font-size : 1rem;
+            margin-top : 1rem;
+        }
+    }
+`;
+
+export const PriceInfoBox = styled.div`
+    display : flex;
+    justify-content : space-around;
+    align-items : flex-start;
+    background-color : rgba(0, 0, 0, 0.7);
+    padding: 1.5rem 2rem;
+    border-radius : 1rem;
+    margin-bottom : 2rem;
+`;
+
+export const PriceInfoItem = styled.div`
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    p {
+        &:first-child {
+            font-weight : bold;
+            font-size : 1.25rem;
         }
         &:last-child {
             font-size : 1rem;
