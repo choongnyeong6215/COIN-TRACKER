@@ -72,8 +72,9 @@ export const ChgThemeBtn = styled.button`
     border-radius : 50%;
     border : none;
     position : fixed;
-    bottom : 1rem;
-    left : 1rem;
+    top : 1rem;
+    right : 1rem;
+    background-color : ${(props) => props.theme.bgColor};
     svg {
         &:first-child {
             fill : ${(props) => props.theme.empTxtColor};
