@@ -3,22 +3,19 @@ import { GlobalStyle } from './styles/globalStyle';
 import {ReactQueryDevtools} from "react-query/devtools";
 import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from './styles/theme';
-import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { isDarkAtom } from './atoms';
 
 const App = () => {
 
-  // 테마 관리
-  const [isDark, setIsDark] = useState(false);
-
-  const handleTheme = () => {
-    setIsDark((curTheme) => !curTheme);
-  }
+  // 테마 recoil
+  const isDark = useRecoilValue(isDarkAtom);
 
   return (
     <>
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
-        <Router handleTheme={handleTheme} isDark={isDark}/>
+        <Router/>
         {/* <ReactQueryDevtools initialIsOpen={true} /> */}
       </ThemeProvider>
     </>

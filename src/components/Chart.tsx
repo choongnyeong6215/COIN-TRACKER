@@ -4,10 +4,15 @@ import { fetchCoinHistory } from "../api";
 import {useQuery} from "react-query";
 import ApexChart from "react-apexcharts";
 import { ChartBox, ChartLoading } from "../styles/ChartStyle";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Chart = () => {
 
-  const {coinId, isDark} = useOutletContext() as ChartPropsItfc;
+  const {coinId} = useOutletContext() as ChartPropsItfc;
+
+  // 테마 recoil
+  const isDark = useRecoilValue(isDarkAtom);
 
   // react-query
   const {isLoading, data} = useQuery<CoinHistroyItfc[]>(

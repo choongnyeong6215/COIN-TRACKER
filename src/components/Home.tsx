@@ -5,17 +5,28 @@ import { useQuery } from "react-query";
 import { fetchCoinList } from "../api";
 import { Helmet } from "react-helmet";
 import {ChgThemeBtn} from '../styles/homeStyle';
-import { HomeThemePropsItfc } from "../interface/HomeInterface";
 // react-icons
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
+// recoil
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 
-const Home = ({handleTheme, isDark} : HomeThemePropsItfc) => {
+const Home = () => {
   // react query
   const {isLoading, data} = useQuery<CoinItfc[]>("coinList", fetchCoinList);
 
   const coinList = data?.slice(0, 100);
+
+  // 테마 recoil value 설정
+  const isDark = useRecoilValue(isDarkAtom);
+  const setTheme = useSetRecoilState(isDarkAtom);
+
+  // 테마 변경 함수
+  const handleTheme = () => {
+    setTheme((prevState) => !prevState);
+  }
   
   return (
     <div>
@@ -23,15 +34,13 @@ const Home = ({handleTheme, isDark} : HomeThemePropsItfc) => {
         <Helmet>
           <title>Coin Tracker</title>
         </Helmet>
-        {isDark ? (
-          <ChgThemeBtn onClick={handleTheme}>
-            <FaMoon size="20" color="#F67280"/>
-          </ChgThemeBtn>
-        ) : (
-          <ChgThemeBtn onClick={handleTheme}>
+        <ChgThemeBtn onClick={handleTheme}>
+          {isDark ? (
             <IoSunnySharp size="20" color="#F67280"/>
+          ) : (
+            <FaMoon size="20" color="#F67280"/>
+          )}
         </ChgThemeBtn>
-        )}
         <Header>
           <Title>Coin Tracker</Title>
         </Header>

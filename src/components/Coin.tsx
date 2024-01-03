@@ -5,15 +5,15 @@ import { CoinParamsItfc, LinkStateItfc, CoinInfoItfc, CoinPriceInfoItfc } from '
 import { useQuery } from 'react-query';
 import { fetchCoinInfo, fetchCoinPriceInfo } from '../api';
 import { Helmet } from 'react-helmet';
-import { CoinThemePropsItfc } from '../interface/CoinInterface';
 import { ChgThemeBtn } from '../styles/homeStyle';
 // react-icons
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
+// recoil
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { isDarkAtom } from '../atoms';
 
-const Coin = ({handleTheme, isDark} : CoinThemePropsItfc) => {
-
-
+const Coin = () => {
   const {coinId} = useParams() as CoinParamsItfc;
 
   // link state
@@ -46,20 +46,27 @@ const Coin = ({handleTheme, isDark} : CoinThemePropsItfc) => {
     navigate("/");
   };
 
+  // 테마 recoil value 설정
+  const isDark = useRecoilValue(isDarkAtom);
+  const setTheme = useSetRecoilState(isDarkAtom);
+
+  // 테마 변경 함수
+  const handleTheme = () => {
+    setTheme((prevState) => !prevState);
+  }
+
   return (
     <Container>
       <Helmet>
         <title>{state?.coinName ? state.coinName : coinInfo?.name}</title>
       </Helmet>
-      {isDark ? (
-          <ChgThemeBtn onClick={handleTheme}>
-            <FaMoon size="20" color="#F67280"/>
-          </ChgThemeBtn>
-        ) : (
-          <ChgThemeBtn onClick={handleTheme}>
+      <ChgThemeBtn onClick={handleTheme}>
+          {isDark ? (
             <IoSunnySharp size="20" color="#F67280"/>
+          ) : (
+            <FaMoon size="20" color="#F67280"/>
+          )}
         </ChgThemeBtn>
-        )}
       <Header>
         <Title>
           {/* 홈 경로에서 세부 정보로 이동하지 않고 바로 세부정부로 이동해도 정보 볼수 있도록 */}
@@ -123,7 +130,7 @@ const Coin = ({handleTheme, isDark} : CoinThemePropsItfc) => {
       </InfoTabBox>
 
       {/* 가격, 차트 컴포넌트 중첩 라우팅 */}
-      <Outlet context={{coinId, isDark}}/>
+      <Outlet context={{coinId}}/>
 
     </Container>
   )
