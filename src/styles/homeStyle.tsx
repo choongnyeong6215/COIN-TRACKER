@@ -13,18 +13,25 @@ export const Header = styled.header`
 `;
 
 export const Title = styled.h1`
-font-size : 3rem;
+    font-size : 3rem;
 `;
 
 export const CoinsList = styled.ul`
     display : grid;
     grid-template-columns : repeat(4, 1fr);
     gap : 1rem;
+
+    @media only screen and (max-width: 600px) {
+        display : flex;
+        flex-direction : column;
+        justify-content : center;
+        align-items : center;
+    }
 `;
 
 export const Coin = styled.li`
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius : 1rem;
     background-color : white;
     display : flex;
@@ -41,11 +48,29 @@ export const Coin = styled.li`
             color : ${(props) => props.theme.empTxtColor}
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        display : flex;
+        flex-direction : row;
+        justify-content : flex-start;
+        align-items : center;
+        margin-bottom : 0.5rem;
+        padding : 1rem;
+        a {
+            font-size : 1rem;
+        }
+    }
 `;
 
 export const CoinImg = styled.img`
     width: 50px;
     height: 50px;
+
+    @media only screen and (max-width: 600px) {
+        margin : 0 0.5rem;
+    }
 `;
 
 export const LoadingAnimation = keyframes`

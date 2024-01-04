@@ -15,6 +15,12 @@ export const MaxPriceBox = styled.div`
     background-color : ${(props) => props.theme.boxColor};
     padding: 1.5rem 2rem;
     border-radius : 1rem;
+    
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 0rem auto;
+    }
 `
 
 export const MaxPriceItem = styled.div`
@@ -27,10 +33,18 @@ export const MaxPriceItem = styled.div`
             margin-top : 0.5rem;
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        font-size : 0.9rem;
+    }
 `
 
 export const MaxPriceData = styled.p`
     font-size : 2rem;
+
+    @media only screen and (max-width: 600px) {
+        font-size : 1.25rem;
+    }
 `
 
 
@@ -41,6 +55,12 @@ export const PercentChgBox = styled.div`
     gap : 1rem;
     margin-top : 2rem;
     margin-bottom : 2rem;
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 2rem auto;
+    }
 `
 
 export const PercentChgItem = styled.div`

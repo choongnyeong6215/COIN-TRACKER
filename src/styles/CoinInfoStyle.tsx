@@ -9,8 +9,13 @@ export const HomeBtn = styled.button`
     background-color : ${(props) => props.theme.empTxtColor};
     border-radius : 1rem;
     color : ${(props) => props.theme.textColor};
-    margin-bottom : 0.5rem;
+    margin-bottom : 1rem;
     cursor : pointer;
+
+    @media only screen and (max-width: 600px) {
+        margin-bottom : 1rem;
+        margin-left : 43px;
+    }
 `
 
 export const DetailInfoBox = styled.div`
@@ -21,6 +26,12 @@ export const DetailInfoBox = styled.div`
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     margin-bottom : 2rem;
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 0rem auto;
+    }
 `;
 
 export const DetailInfoItem = styled.div`
@@ -48,6 +59,12 @@ export const PriceInfoBox = styled.div`
     padding: 1.5rem 2rem;
     border-radius : 1rem;
     margin-bottom : 2rem;
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 2rem auto;
+    }
 `;
 
 export const PriceInfoItem = styled.div`
@@ -75,19 +92,31 @@ export const CoinDescription = styled.div`
         text-align: center;
         line-height: 2rem;
     }
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 0 auto;
+    }
 `
 
 export const InfoTabBox = styled.div`
     display : grid;
     grid-template-columns : repeat(2, 1fr);
     gap : 1rem;
+
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        height: 80%;
+        margin : 0 auto;
+    }
 `
 
 export const InfoTabItem = styled.div<{$isMatchedPath : boolean}>`
     display : flex;
     justify-content : center;
     align-items : center;
-    padding : 1rem 5rem;
+    padding : 1rem;
     background-color : ${(props) => props.theme.boxColor};
     border-radius : 1rem;
     margin-top : 2rem;
