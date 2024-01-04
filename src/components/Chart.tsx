@@ -95,7 +95,7 @@ const Chart = () => {
             }          
           }}
         />) : (
-          <p style={{textAlign : "center"}}>차트 데이터가 존재하지 않습니다.</p>
+          <p style={{textAlign : "center", marginTop : "1rem"}}>차트 데이터가 존재하지 않습니다.</p>
         )
       )}
     </ChartBox>

@@ -52,9 +52,8 @@ export const MaxPriceData = styled.p`
 export const PercentChgBox = styled.div`
     display : grid;
     grid-template-columns : repeat(2, 1fr);
-    gap : 1rem;
-    margin-top : 2rem;
-    margin-bottom : 2rem;
+    gap : 0.5rem;
+    margin : 2rem 0;
 
     @media only screen and (max-width: 600px) {
         width: 80%;
@@ -71,6 +70,16 @@ export const PercentChgItem = styled.div`
         &:last-child {
             margin-top : 0.5rem;
             font-size : 2rem;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+        padding: 1rem 1.5rem;
+        p {
+            &:last-child {
+                margin-top : 0.5rem;
+                font-size : 1.5rem;
+            }
         }
     }
 `

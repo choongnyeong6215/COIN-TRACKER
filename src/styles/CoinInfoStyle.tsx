@@ -82,6 +82,15 @@ export const PriceInfoItem = styled.div`
             margin-top : 1rem;
         }
     }
+
+    @media only screen and (max-width: 600px) {
+        p {
+            &:last-child {
+                font-size : 0.75rem;
+                margin-top : 1rem;
+            }
+        }
+    }
 `;
 
 export const CoinDescription = styled.div`
@@ -119,7 +128,7 @@ export const InfoTabItem = styled.div<{$isMatchedPath : boolean}>`
     padding : 1rem;
     background-color : ${(props) => props.theme.boxColor};
     border-radius : 1rem;
-    margin-top : 2rem;
+    margin : 2rem 0;
     // 중첩 라우팅 요소 중 현재 경로의 요소만 강조색상
     color : ${(props) => props.$isMatchedPath ? props.theme.empTxtColor : props.theme.textColor};
 `
