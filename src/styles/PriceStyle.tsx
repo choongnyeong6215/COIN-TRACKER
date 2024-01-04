@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const PriceBox = styled.div`
-    margin-top : 2rem;
+    /* margin-top : 2rem; */
 `
 
 export const PriceLoading = styled.p`
+    margin : 0.5rem 0;
     text-align : center;
 `
 

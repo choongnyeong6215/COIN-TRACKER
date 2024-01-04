@@ -11,5 +11,6 @@ export const ChartBox = styled.div`
 `
 
 export const ChartLoading = styled.p`
+    margin : 0.5rem 0;
     text-align : center;
 `
