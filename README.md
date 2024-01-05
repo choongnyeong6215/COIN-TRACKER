@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+<!-- # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -43,4 +43,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To learn React, check out the [React documentation](https://reactjs.org/). -->
+
+# COIN-TRACKER
+
+가상화폐 시세 현황을 한눈에!
+
+각종 가상화폐의 정보, 가격 변화, ohlc 데이터를 확인할 수 있습니다.
+
+##  Skills
+
+<p>
+    <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
+    <im src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
+    <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
+    <img src="https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)">
+    <img src="https://camo.githubusercontent.com/b40764551d989d021222877daa6eb197f6d85c31888f6cde200eefeeb545bfd5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5265636f696c2d3335373845353f7374796c653d666c6174266c6f676f3d5265636f696c266c6f676f436f6c6f723d7768697465">
+    <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+</p>
+
+## Library
+
+주식, 가상화폐 거래소에서 자주 보이는 캔들차트를 구현하기 위해  ApexCharts 라이브러리를 사용하였습니다.
+
+## open api
+
+[코인파프리카](https://api.coinpaprika.com/v1/coins)
+[코인 이미지](https://cryptocurrencyliveprices.com/img/coinId.png)
