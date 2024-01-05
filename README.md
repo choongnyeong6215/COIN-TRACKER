@@ -75,9 +75,6 @@ props drilling으로 인한 props 추적의 불편함을 해결하고자 recoil�
 주식, 가상화폐 거래소에서 자주 보이는 캔들차트를 구현하기 위해 ApexCharts를 사용하였습니다.
 
 ## open api
-``
 [코인파프리카](https://api.coinpaprika.com/v1/coins)
-
-<br>
 
 [코인 이미지](https://cryptocurrencyliveprices.com/img/coinId.png)
