@@ -58,15 +58,26 @@ To learn React, check out the [React documentation](https://reactjs.org/). -->
     <im src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
     <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white">
     <img src="https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white)">
-    <img src="https://camo.githubusercontent.com/b40764551d989d021222877daa6eb197f6d85c31888f6cde200eefeeb545bfd5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5265636f696c2d3335373845353f7374796c653d666c6174266c6f676f3d5265636f696c266c6f676f436f6c6f723d7768697465">
+    <img src="https://img.shields.io/badge/recoil-DB7093?style=for-the-badge&logo=recoil&logoColor=white">
     <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
 </p>
 
 ## Library
 
-주식, 가상화폐 거래소에서 자주 보이는 캔들차트를 구현하기 위해  ApexCharts 라이브러리를 사용하였습니다.
+캐시를 통해 api 요청을 줄이기 위하여 react query를 사용하였습니다.
+
+코인 상세정보 화면 및 가격 차트 서브 페이지를 구현하기 위해 react router를 사용하였습니다.
+
+props drilling으로 인한 props 추적의 불편함을 해결하고자 recoil을 사용했습니다.
+
+컴포넌트 스타일 구분 및 props를 스타일에서도 사용하기 위해 styled-components를 사용했습니다.
+
+주식, 가상화폐 거래소에서 자주 보이는 캔들차트를 구현하기 위해 ApexCharts를 사용하였습니다.
 
 ## open api
-
+``
 [코인파프리카](https://api.coinpaprika.com/v1/coins)
+
+<br>
+
 [코인 이미지](https://cryptocurrencyliveprices.com/img/coinId.png)
