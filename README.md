@@ -77,4 +77,4 @@ props drilling으로 인한 props 추적의 불편함을 해결하고자 recoil�
 ## open api
 [코인파프리카](https://api.coinpaprika.com/v1/coins)
 
-[코인 이미지](https://cryptocurrencyliveprices.com/img/coinId.png)
+[코인 이미지](https://cryptocurrencyliveprices.com/img/btc-bitcoin.png)
